@@ -26,6 +26,8 @@ public class Student {
   @Column
   private Double grade3;
 
+  public Student() {}
+  
   public Student(Integer id, String name, Double grade1, Double grade2, Double grade3) {
     this.id = id;
     this.name = name;
