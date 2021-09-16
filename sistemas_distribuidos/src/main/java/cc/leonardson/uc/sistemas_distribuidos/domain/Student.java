@@ -2,12 +2,28 @@ package cc.leonardson.uc.sistemas_distribuidos.domain;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Student {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
+
   private String name;
+
+  @Column
   private Double grade1;
+
+  @Column
   private Double grade2;
+
+  @Column
   private Double grade3;
 
   public Student(Integer id, String name, Double grade1, Double grade2, Double grade3) {

@@ -9,9 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/exercicio")
 public class ExercicioResource {
-  
+
   @GetMapping("/{operation}")
-  public String calculate(@PathVariable(name = "operation") String operation, @RequestParam(name = "n1") Integer n1, @RequestParam(name = "n2") Integer n2) {
+  public String calculate(@PathVariable(name = "operation") String operation, @RequestParam(name = "n1") Integer n1,
+      @RequestParam(name = "n2") Integer n2) {
     String value = "";
     if (operation.equals("adicao")) {
       value = n1 + " + " + n2 + " = " + (n1 + n2);
