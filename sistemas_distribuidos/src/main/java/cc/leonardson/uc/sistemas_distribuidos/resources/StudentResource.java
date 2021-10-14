@@ -26,6 +26,11 @@ public class StudentResource {
     return service.listById(id);
   }
 
+  @GetMapping("/{name}")
+  public List<Optional<Student>> listByName(@PathVariable(name = "name") String name) {
+    return service.listByName(name);
+  }
+
   @DeleteMapping("/{id}")
   public void deleteById(@PathVariable(name = "id") Integer id) throws Exception {
     service.delete(id);

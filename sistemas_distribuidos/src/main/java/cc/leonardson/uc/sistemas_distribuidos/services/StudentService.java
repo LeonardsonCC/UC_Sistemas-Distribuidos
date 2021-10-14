@@ -23,6 +23,10 @@ public class StudentService {
     return repository.findById(id);
   }
 
+  public List<Optional<Student>> listByName(String name) {
+    return repository.findByName(name);
+  }
+
   public void delete(Integer id) throws Exception {
     Optional<Student> s = this.listById(id);
     if (s.isPresent()) {

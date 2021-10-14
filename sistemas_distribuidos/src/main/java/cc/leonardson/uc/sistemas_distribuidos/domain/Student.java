@@ -2,11 +2,7 @@ package cc.leonardson.uc.sistemas_distribuidos.domain;
 
 import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Student {
@@ -26,8 +22,19 @@ public class Student {
   @Column
   private Double grade3;
 
+  @ManyToOne
+  City city;
+
   public Student() {}
-  
+
+  public City getCity() {
+    return city;
+  }
+
+  public void setCity(City city) {
+    this.city = city;
+  }
+
   public Student(Integer id, String name, Double grade1, Double grade2, Double grade3) {
     this.id = id;
     this.name = name;
