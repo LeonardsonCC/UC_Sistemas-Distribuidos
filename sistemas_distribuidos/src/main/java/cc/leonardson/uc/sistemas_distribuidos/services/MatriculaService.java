@@ -60,4 +60,22 @@ public class MatriculaService {
     }
   }
 
+  public Matricula update(Integer id, Matricula m) {
+    Matricula bd = findById(id);
+    Student s = studentRepository.getById(m.getId().getStudent().getId());
+    Discipline d = disciplineRepository.getById(m.getId().getDiscipline().getId());
+    MatriculaPK mp = new MatriculaPK();
+
+    if(s != null && d != null) {
+      mp.setStudent(s);
+      mp.setDiscipline(d);
+
+      m.setId(mp);
+      m.setSemester(m.getSemester());
+      repository.save(m);
+    }
+    return bd;
+  }
+
+
 }

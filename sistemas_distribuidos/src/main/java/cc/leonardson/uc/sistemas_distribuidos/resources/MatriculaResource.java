@@ -1,14 +1,11 @@
 package cc.leonardson.uc.sistemas_distribuidos.resources;
 
-import cc.leonardson.uc.sistemas_distribuidos.domain.Discipline;
 import cc.leonardson.uc.sistemas_distribuidos.domain.Matricula;
-import cc.leonardson.uc.sistemas_distribuidos.services.DisciplineService;
 import cc.leonardson.uc.sistemas_distribuidos.services.MatriculaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RequestMapping("/matricula")
 public class MatriculaResource {
@@ -17,12 +14,12 @@ public class MatriculaResource {
   MatriculaService service;
 
   @GetMapping("/")
-  public List<Matricula> listaTodos(){
+  public List<Matricula> list(){
     return service.listAll();
   }
 
   @GetMapping("/{id}")
-  public Matricula getById(@PathVariable(name="id") Integer id){
+  public Matricula listById(@PathVariable(name="id") Integer id){
     Matricula resultado = service.findById(id);
 
     if(resultado == null) {
@@ -50,5 +47,10 @@ public class MatriculaResource {
     } catch (Exception e) {
       return "erro";
     }
+  }
+
+  @PutMapping("/{id}")
+  public Matricula updateMatricula(@PathVariable(name="id") Integer id, @RequestBody Matricula p) {
+    return service.update(id, p);
   }
 }
